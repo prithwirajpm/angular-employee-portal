@@ -4,17 +4,25 @@
             <img class="img-fluid" src="https://empxtrack.com/wp-content/uploads/2021/04/Employee-Self-Service-Portal.png" alt="" srcset="">
         </div>
         <div class="col-lg-6 col-md-12">
-            <form>
+            <form #loginForm="ngForm" (ngSubmit)="login()">
                 <h2 class="text-center overflow-y-hidden">Login Form</h2>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" name="email" [(ngModel)]="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" email required #usersemailinput="ngModel">
+                </div>
+                <!-- invalid email -->
+                <div *ngIf="usersemailinput.invalid && usersemailinput.touched" class="mb-3 text-danger fw-bolder">
+                    Invalid Email
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password"  name="password" [(ngModel)]="password"  class="form-control" id="exampleInputPassword1" required pattern="[a-zA-Z0-9]*" minlength="3" #userspassword="ngModel">
                 </div>
-                <div class="w-100"><button type="submit" class="btn btn-primary w-100">Login</button></div>
+                 <!-- invalid password -->
+                 <div *ngIf="userspassword.invalid && userspassword.touched" class="mb-3 text-danger fw-bolder">
+                    Invalid Email
+                </div>
+                <div class="w-100"><button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary w-100">Login</button></div>
             </form>
         </div>
     </div>

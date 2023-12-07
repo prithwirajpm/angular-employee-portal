@@ -5,9 +5,36 @@
        
 
     </div>
-    <div>
+    <div class="w-100">
         <div class="dashboard text-black p-3 w-100">
-            <h1>Welcome User</h1>
+            <div class="d-flex justify-content-between"><h1>Welcome User</h1> 
+            <button class="btn btn-primary" routerLink="/add-user">Add</button>
+            </div>
+            <div>
+                <table class="table border shadow mt-4">
+                    <thead>
+                      <tr>
+                        <th scope="col">User Id</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">User Status</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>
+                            <a routerLink="edit/1"><i class="fa-solid fa-pen text-success me-2 btn"></i></a>
+                            <i class="fa-solid fa-trash text-danger btn"></i>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
         </div>
     </div>
 </div>
