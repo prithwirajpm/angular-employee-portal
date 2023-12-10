@@ -10,7 +10,7 @@
            <h1>Add User</h1> 
         </div>
         <div class="d-flex justify-content-center align-items-center">
-            <form #addUserForm="ngForm" class="border w-75 p-4 shadow">
+            <form #addUserForm="ngForm" (ngSubmit)="addUser()" class="border w-75 p-4 shadow">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">User Id</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="id" [(ngModel)]="user.id" #userid="ngModel" required pattern="[0-9]*">
@@ -38,10 +38,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="disabledSelect" class="form-label">status</label>
-                    <select id="disabledSelect" class="form-select">
+                    <select id="floatingInputStatus" class="form-select" name="active" [(ngModel)]="user.active" #active="ngModel" required>
                       <option value="1">Active</option>
                       <option value="0">Inactive</option>
                     </select>
+                </div>
+                <!-- Inavalid staus -->
+                <div *ngIf="active.invalid && active.touched" class="mb-3 text-danger fw-bolder">
+                    Invalid user Status
                 </div>
                 <div><button  [disabled]="addUserForm.invalid" type="submit" class="btn btn-success m-2">Save</button>
                     <button type="submit" (click)="cancel()" class="btn btn-primary m-2">Cancel</button></div>
