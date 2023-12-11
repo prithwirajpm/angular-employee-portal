@@ -10,6 +10,7 @@ import { UserModel } from '../users.model';
 export class UsersListComponent implements OnInit{
 
 allUsers:UserModel[]=[]
+
 constructor(private api:UserApiService){}
 
 ngOnInit(): void {

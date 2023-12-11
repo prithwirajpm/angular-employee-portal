@@ -25,4 +25,17 @@ export class UserApiService {
     return this.http.delete(`${this.SERVER_URL}/users/${id}`)
 
   }
+
+  // viewUserApi
+  viewUserAPI(id:any){
+    return this.http.get(`${this.SERVER_URL}/users/${id}`)
+
+  }
+
+  // editUser api
+  updateUserAPI(id:any,user:UserModel){
+    return this.http.put(`${this.SERVER_URL}/users/${id}`,user)
+
+  }
+
 }
