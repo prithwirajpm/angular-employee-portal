@@ -22,14 +22,14 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                      <tr *ngFor="let user of allUsers" [hidden]="user.id=='1'">
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td><span [ngClass]="user.active=='1'?'btn btn-success':'btn btn-warning'">{{user.active=="1"?"Active":"InActive"}}</span></td>
                         <td>
-                            <a routerLink="edit/1"><i class="fa-solid fa-pen text-success me-2 btn"></i></a>
-                            <i class="fa-solid fa-trash text-danger btn"></i>
+                            <a routerLink="edit/{{user.id}}"><i class="fa-solid fa-pen text-success me-2 btn"></i></a>
+                            <i class="fa-solid fa-trash text-danger btn" (click)="removeUser(user.id)"></i>
                         </td>
                       </tr>
                     </tbody>

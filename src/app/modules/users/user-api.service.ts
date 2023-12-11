@@ -14,4 +14,15 @@ export class UserApiService {
     return this.http.post(`${this.SERVER_URL}/users`,user)
 
   }
+
+  // get all User
+  getAllUsersAPI(){
+    return this.http.get(`${this.SERVER_URL}/users`)
+
+  }
+// delete User
+  deleteUserAPI(id:string){
+    return this.http.delete(`${this.SERVER_URL}/users/${id}`)
+
+  }
 }

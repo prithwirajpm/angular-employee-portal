@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserApiService } from '../user-api.service';
 import { UserModel } from '../users.model';
 
@@ -9,7 +10,7 @@ import { UserModel } from '../users.model';
 })
 export class AddUserComponent {
 user:UserModel={}
-constructor(private api:UserApiService){}
+constructor(private api:UserApiService,private router:Router){}
 addUser(){
   this.api.addUserAPI(this.user).subscribe({
     next:(res:UserModel)=>{
