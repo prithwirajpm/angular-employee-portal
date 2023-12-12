@@ -10,8 +10,18 @@
             <div class="d-flex justify-content-between"><h1>Welcome User</h1> 
             <button class="btn btn-primary" routerLink="add">Add</button>
             </div>
-            <div class="w-75">
-              <input type="search" class="form-control" placeholder="Search details" name="" id="">
+            <div class="w-75 d-flex justify-content-between">
+             <div> <input type="text" [(ngModel)]="searchKey" class="form-control" placeholder="Search details"></div>
+            <div>
+               <button class="btn btn-secondary" mat-button [matMenuTriggerFor]="menu">Sort</button>
+               <mat-menu #menu="matMenu">
+                 <button (click)="sortById()" mat-menu-item>By User Id</button>
+                 <button (click)="sortBYname()" mat-menu-item>By User Name</button>
+               </mat-menu>
+            </div>
+            <div>
+              <button (click)="generatePDF()" class="btn btn-success">Export</button>
+            </div>
             </div>
             <div>
                 <table class="table border shadow mt-4">
@@ -25,7 +35,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let user of allUsers" [hidden]="user.id=='1'">
+                      <tr *ngFor="let user of allUsers | search : searchKey | paginate: {itemsPerPage:2,currentPage:page} " [hidden]="user.id=='1'">
                         <td>{{user.id}}</td>
                         <td>{{user.name}}</td>
                         <td>{{user.email}}</td>
@@ -35,6 +45,9 @@
                             <i class="fa-solid fa-trash text-danger btn" (click)="removeUser(user.id)"></i>
                         </td>
                       </tr>
+                      <tr *ngIf="(allUsers|search:searchKey).length===0">
+                        <p class="fw-bolder text-danger">User dose not exist!!!</p>
+                        </tr>
                     </tbody>
                   </table>
             </div>
