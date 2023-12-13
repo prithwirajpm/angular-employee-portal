@@ -1,13 +1,38 @@
 <div class="d-flex">
-    <div style="height: 89vh;width: 100px;" class="sidebar bg-dark text-light p-3 d-flex flex-column">
+    <div *ngIf="showSider" style="height: 89vh;width: 100px;" class="sidebar bg-dark text-light p-3 d-flex flex-column">
         <a style="text-decoration: none;margin-top: 10px;font-weight: bold;color: white;" routerLink="/dashboard">Home</a>
         <a style="text-decoration: none;margin-top: 10px;font-weight: bold;color: white;" routerLink="/users">Users</a>
        
 
     </div>
-    <div>
+    <div class="w-100">
         <div class="dashboard text-black p-3 w-100">
-            <h1>Welcome Admin!!!</h1>
+            <div class="row">
+                <div style="height: 180px;" class="col-8 bg-danger rounded shadow">
+                   <div class="d-flex align-items-center" style="height: 170px;"> <h3><button (click)="menuBtnClick()"  class="btn"><i class="fa-solid fa-bars" ></i></button>WELCOME ADMIN</h3></div>
+                   <div class="row pt-4">
+                    <div class="col-5 shadow m-2">
+                        <h2>calender</h2>
+                        <mat-card class="demo-inline-calendar-card">
+                            <mat-calendar [(selected)]="selected"></mat-calendar>
+                          </mat-card>
+                    </div>
+                    <div class="col-6 shadow m-2">
+                        <app-chart></app-chart>
+                    </div>
+                   </div>
+                </div>
+                <div class="col-4">
+                    <div style="height: 400px;" class="edit-admin border rounded shadow p-2">
+                        edit admin
+                    </div>
+                    <div class="mt-2 border rounded shadow p-2 bg-dark text-light d-flex align-items-center justify-content-center">
+                        <h2 class="fw-bolder"><i class="fa-solid fa-users me-2"></i>Employee : 12</h2>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
     </div>
 </div>
