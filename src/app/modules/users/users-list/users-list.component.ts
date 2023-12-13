@@ -14,7 +14,7 @@ export class UsersListComponent implements OnInit{
 
 allUsers:UserModel[]=[]
 searchKey:string=''
-page:any=1
+page:number=1;
 
 
 constructor(private api:UserApiService){}

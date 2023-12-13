@@ -35,7 +35,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let user of allUsers | search : searchKey | paginate: {itemsPerPage:2,currentPage:page} " [hidden]="user.id=='1'">
+                      <tr *ngFor="let user of allUsers | search : searchKey | paginate: {itemsPerPage:5,currentPage:page} " [hidden]="user.id=='1'">
                         <td>{{user.id}}</td>
                         <td>{{user.name}}</td>
                         <td>{{user.email}}</td>
@@ -50,6 +50,7 @@
                         </tr>
                     </tbody>
                   </table>
+                  <pagination-controls (pageChange)="page = $event"></pagination-controls>
             </div>
         </div>
     </div>

@@ -7,10 +7,15 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ToasterService {
 
-  constructor(private toastr:ToastrService) { 
+  constructor(private toastr:ToastrService) { }
    
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
+  showSuccess(msg:any) {
+    this.toastr.success('success',msg);
   }
+  showError(msg:any) {
+    this.toastr.error('success',msg);
+  }
+  showWaring(msg:any) {
+    this.toastr.info('success',msg);
   }
 }
